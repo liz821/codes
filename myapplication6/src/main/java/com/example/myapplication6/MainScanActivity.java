@@ -29,6 +29,8 @@ public class MainScanActivity extends AppCompatActivity implements View.OnClickL
         tabs = findViewById(R.id.tabs);
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
+        button1.setOnClickListener(this);
+        button2.setOnClickListener(this);
         FloatingActionButton fab = findViewById(R.id.fab);
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +41,8 @@ public class MainScanActivity extends AppCompatActivity implements View.OnClickL
                         .setAction("Action", null).show();
             }
         });
+
+        onBottomCheckChanged();
     }
 
     @Override
@@ -63,9 +67,11 @@ public class MainScanActivity extends AppCompatActivity implements View.OnClickL
        tabs.removeAllTabs();
        String[] currentTags = tags[position];
        for (int i = 0; i< currentTags.length; i++){
-           TabLayout.Tab tab = new TabLayout.Tab();
+
+           TabLayout.Tab tab =tabs.newTab();
            tab.setText(currentTags[i]);
            tabs.addTab(tab);
+
        }
    }
 }
